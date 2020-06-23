@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import {FiMinus, FiMinimize, FiMaximize, FiX} from 'react-icons/fi'
+
 import './styles.css'
 
 const ipcRenderer = window.require('electron').ipcRenderer
@@ -42,37 +44,48 @@ const Titlebar = () => {
 
     return (
         <div className="Titlebar">
-            <div
-                className={isActive ? 'Title-Bar' : 'Title-Bar-inactive'}
-            >
+            <div className={isActive ? 'Title-Bar' : 'Title-Bar-inactive'} >
                 <div className="Titlebar-drag-region"></div>
-                <div className="Title-Bar__section-icon">
+
+                <div className="title-bar-section-logo">
                 </div>
-                <div className="Title-Bar__section-menubar">
+
+                <div className="title-bar-section-menu">
                 </div>
-                <div className="Title-Bar__section-center">
+
+                <div className="title-bar-section-center">
                 </div>
-                <div className="Title-Bar__section-windows-control">
-                    <div
-                        className="section-windows-control_box">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" strokeLinejoin="round"><circle onClick={minimizeHandler} className={isActive ? 'minimize-active_logo' : 'minimize-inactive_logo'} cx="11.6" cy="11.6" r="11.4" /></svg>
+
+                <div className="title-bar-section-windows-control-container">
+                    
+                    <div className="windows-control-box-container">
+                        <div className="button minize">
+                            <FiMinus onClick={minimizeHandler} size={18}/>
+                        </div>
                     </div>
+                    
                     {isMaximized ?
-                        <div
-                            className="section-windows-control_box">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" strokeLinejoin="round"><circle onClick={unmaximizeHandler} className={isActive ? 'unmaximize-active_logo' : 'unmaximize-inactive_logo'} cx="11.6" cy="11.6" r="11.4" /></svg>
+                        
+                        <div className="windows-control-box-container">
+                            <div className="button maximize" >
+                                <FiMinimize onClick={unmaximizeHandler} size={18}/>
+                            </div>
                         </div>
                         :
-                        <div
-                            className="section-windows-control_box">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" strokeLinejoin="round"><circle onClick={maximizeHandler} className={isActive ? 'maximize-active_logo' : 'maximize-inactive_logo'} cx="11.6" cy="11.6" r="11.4" /></svg>
+                        <div className="windows-control-box-container">
+                            <div className="button maximize">
+                                <FiMaximize onClick={maximizeHandler} size={18} />
+                            </div>
                         </div>
                     }
-                    <div
-                        className="section-windows-control_box">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" strokeLinejoin="round"><circle onClick={closeHandler} className={isActive ? 'close-active_logo' : 'close-inactive_logo'} cx="11.6" cy="11.6" r="11.4" /></svg>
+
+                    <div className="windows-control-box-container">
+                        <div className="button close">
+                            <FiX onClick={closeHandler} size={18} />
+                        </div>
                     </div>
                 </div>
+
                 <div
                     style={isMaximized ? { display: 'none' } : {}}
                     className="resizer">

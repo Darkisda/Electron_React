@@ -45,43 +45,47 @@ const Titlebar = () => {
     return (
         <div className="Titlebar">
             <div className={isActive ? 'Title-Bar' : 'Title-Bar-inactive'} >
-                <div className="Titlebar-drag-region"></div>
+                <div className="Titlebar-drag-region">
+                </div>
 
                 <div className="title-bar-section-logo">
+                    a
                 </div>
 
                 <div className="title-bar-section-menu">
+                    a
                 </div>
 
                 <div className="title-bar-section-center">
+                    <p>Application Name</p>
                 </div>
 
                 <div className="title-bar-section-windows-control-container">
                     
                     <div className="windows-control-box-container">
-                        <div className="button minize">
-                            <FiMinus onClick={minimizeHandler} size={18}/>
+                        <div className="button minize" onClick={minimizeHandler} >
+                            <FiMinus size={18}/>
                         </div>
                     </div>
                     
                     {isMaximized ?
                         
                         <div className="windows-control-box-container">
-                            <div className="button maximize" >
-                                <FiMinimize onClick={unmaximizeHandler} size={18}/>
+                            <div className="button maximize" onClick={unmaximizeHandler} >
+                                <FiMinimize size={18}/>
                             </div>
                         </div>
                         :
                         <div className="windows-control-box-container">
-                            <div className="button maximize">
-                                <FiMaximize onClick={maximizeHandler} size={18} />
+                            <div className="button maximize" onClick={maximizeHandler} >
+                                <FiMaximize size={18} />
                             </div>
                         </div>
                     }
 
                     <div className="windows-control-box-container">
-                        <div className="button close">
-                            <FiX onClick={closeHandler} size={18} />
+                        <div className="button close" onClick={closeHandler} >
+                            <FiX size={18} />
                         </div>
                     </div>
                 </div>
